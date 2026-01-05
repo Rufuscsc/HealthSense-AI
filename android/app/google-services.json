@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "682336003159",
+    "project_id": "fir-turorial-f2eea",
+    "storage_bucket": "fir-turorial-f2eea.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682336003159:android:6241ec6bcdc003aa46ef12",
+        "android_client_info": {
+          "package_name": "com.example.firebasepractice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIH3dxJJJPtEPcb0tbyYN2eyTgdt4Q2T4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
