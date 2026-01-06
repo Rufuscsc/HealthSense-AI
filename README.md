@@ -1,77 +1,167 @@
-# 🏥 HealthSense AI: Smart Health Assistant
+# 🏥 HealthSense AI  
+### Smart Health Assistant for University Students
 
-[cite_start]**HealthSense AI** is an intelligent mobile diagnostic assistant designed specifically for university students[cite: 7, 82]. [cite_start]It bridges the gap between early symptoms and medical action by providing instant, AI-driven illness predictions and actionable health advice[cite: 82, 311].
+![Flutter](https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter)
+![Firebase](https://img.shields.io/badge/Firebase-Backend-orange?logo=firebase)
+![Gemini](https://img.shields.io/badge/Google%20Gemini-AI-green?logo=google)
+![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-lightgrey)
+
+HealthSense AI is an intelligent mobile-based health assistant designed to help university students assess early symptoms and make informed health decisions. The application leverages Artificial Intelligence to analyze user-described symptoms and provide probabilistic illness predictions with confidence scores, while emphasizing privacy, speed, and ethical use.
+
+> ⚠️ **Disclaimer**: HealthSense AI is a preliminary diagnostic tool and does not replace professional medical advice. Always consult a qualified healthcare provider for serious or persistent symptoms.
+
+---
+
+## 📱 Project Overview
+
+Many students delay seeking medical care due to uncertainty, academic workload, or limited access to healthcare facilities. HealthSense AI bridges this gap by offering instant, AI-powered symptom analysis and actionable health guidance for common student illnesses such as malaria, typhoid, flu, and cold.
+
+Users describe symptoms in natural language and receive AI-generated illness predictions with confidence scores to guide urgency and next steps.
 
 ---
 
 ## ✨ Key Features
 
-* [cite_start]**Natural Language Symptom Entry**: Describe how you feel in your own words; no rigid checklists are required[cite: 86, 121].
-* [cite_start]**Gemini-Powered Inference**: Leverages Large Language Models (LLMs) to analyze unstructured symptoms with **92% accuracy** for common tropical diseases[cite: 82, 173, 220].
-* [cite_start]**Probabilistic Predictions**: Receive a diagnosis with a **Confidence Score** (e.g., "88% likelihood of Malaria") to help you understand the urgency[cite: 87, 307].
-* [cite_start]**Secure Medical History**: All entries are stored in Cloud Firestore using strict **Row-Level Security (RLS)** to ensure your health data remains private and isolated[cite: 88, 202].
-* [cite_start]**Context-Aware Advice**: Tailored recommendations for common student health issues like Malaria, Typhoid, and Flu[cite: 193, 307].
+- 📝 **Natural Language Symptom Input**  
+  Describe symptoms freely without rigid checklists.
+
+- 🧠 **AI-Powered Illness Prediction**  
+  Powered by Google Gemini Large Language Models.
+
+- 📊 **Confidence-Based Results**  
+  Each prediction includes a likelihood percentage.
+
+- 🔒 **Secure Medical Records**  
+  Firebase Authentication and Cloud Firestore ensure data privacy.
+
+- ⚡ **Fast Response Time**  
+  Optimized for low-latency feedback.
+
+- 🎓 **Student-Focused Design**  
+  Tailored to common health challenges in university environments.
 
 ---
 
-## 🚀 System Architecture
+## 🏗️ System Architecture
 
-[cite_start]The application follows a modern **Serverless Client-Server** pattern[cite: 160]:
+HealthSense AI follows a **serverless client-server architecture**:
 
-* [cite_start]**Frontend**: Built with **Flutter (Dart)** using **Material Design 3** for a fast, intuitive UI[cite: 86, 159].
-* [cite_start]**AI Engine**: Integrated via the **Google Generative AI SDK** using the **Gemini 2.5 Flash** model[cite: 161, 194].
-* [cite_start]**Backend**: Powered by **Firebase** for Authentication and **Cloud Firestore** for real-time data persistence[cite: 160, 162].
-
-
+- **Frontend**: Flutter (Dart) with Material Design 3  
+- **AI Engine**: Google Generative AI SDK (Gemini 2.5 Flash)  
+- **Backend**: Firebase Authentication & Cloud Firestore (NoSQL)
 
 ---
 
-## 🛠️ Getting Started
+## 🛠️ Tech Stack
 
-### Prerequisites
-* [Flutter SDK](https://docs.flutter.dev/get-started/install) (Stable version)
-* A [Google Gemini API Key](https://aistudio.google.com/app/apikey)
-* A [Firebase Project](https://console.firebase.google.com/)
-
-### Installation
-1.  **Clone the repository**:
-    ```bash
-    git clone [https://github.com/Rufuscsc/HealthSense-AI.git](https://github.com/Rufuscsc/HealthSense-AI.git)
-    cd HealthSense-AI
-    ```
-2.  **Install dependencies**:
-    ```bash
-    flutter pub get
-    ```
-3.  **Environment Setup**: Add your Gemini API Key to your configuration file (e.g., `lib/services/ai_service.dart`):
-    ```dart
-    const String _apiKey = 'YOUR_GEMINI_API_KEY_HERE';
-    ```
-4.  **Run the application**:
-    ```bash
-    flutter run
-    ```
+| Layer | Technology |
+|-----|-----------|
+| Frontend | Flutter (Dart) |
+| AI Engine | Google Gemini API |
+| Backend | Firebase |
+| Database | Cloud Firestore |
+| Design | Material Design 3 |
 
 ---
 
-## 🧪 Testing and Quality
+## 🚀 Getting Started
 
-[cite_start]This project employs a **Hybrid Testing Strategy** to ensure medical-grade reliability[cite: 217]:
+### Install Dependencies
+```bash
+flutter pub get
+````
 
-* [cite_start]**Unit Testing**: 100% pass rate on critical prompt construction and JSON parsing logic[cite: 218, 230].
-* [cite_start]**System Testing**: Verified **<1.2s latency** for instant user feedback[cite: 220].
-* [cite_start]**Security Testing**: Robust data isolation confirmed through **Firebase Security Rules**[cite: 221, 254].
+### Configure API Key
+
+Add your Gemini API key in:
+
+```text
+lib/services/ai_service.dart
+```
+
+```dart
+const String _apiKey = 'YOUR_GEMINI_API_KEY_HERE';
+```
+
+### Run the Application
+
+```bash
+flutter run
+```
+
+
+## 🧪 Testing and Quality Assurance
+
+A hybrid testing strategy was adopted to ensure system reliability:
+
+### ✅ Unit Testing
+
+* Tested prompt construction and response parsing logic.
+
+### ⚙️ System Testing
+
+* Verified response latency below **1.2 seconds**.
+
+### 🔐 Security Testing
+
+* Ensured proper data isolation using **Firebase Security Rules**.
 
 ---
 
-## 👥 Author
-* [cite_start]**Wellens Rufus** (Matric No: 222517) [cite: 4, 5]
-* [cite_start]**Supervisor**: Prof. Adebola K. [cite: 6]
-* [cite_start]**Department**: Department of Computer Science, Academic Year 2024/2025 [cite: 1, 3]
+## 📸 Screenshots & Demo
+
+> 📌 *Replace the placeholders below with actual screenshots or GIFs from your app.*
+
+### 📱 App Screenshots
+
+| Home Screen                   | Symptom Input                   | Prediction Result                 |
+| ----------------------------- | ------------------------------- | --------------------------------- |
+| ![Home](screenshots/home.png) | ![Input](screenshots/input.png) | ![Result](screenshots/result.png) |
+
+### 🎥 Demo GIF
+
+```text
+screenshots/demo.gif
+```
+
+![Demo](screenshots/demo.gif)
+
+---
+
+## 📌 Project Scope & Limitations
+
+### Scope
+
+* Early symptom assessment
+* Common student illnesses
+* Mobile-based self-assessment
+* Secure health data storage
+
+### Limitations
+
+* Not a replacement for professional medical diagnosis
+* Accuracy depends on user-provided symptom quality
+* Limited to predefined illness categories
+
+---
+
+## 🎓 Academic Information
+
+* **Author**: Wellens Rufus
+* **Matric No**: 222517
+* **Department**: Computer Science
+* **Academic Year**: 2024/2025
+* **Project Type**: Final Year Project (UI)
 
 ---
 
 ## 📜 License
-This project is my final year project in UI.
 
-> **Disclaimer**: *HealthSense AI is a preliminary diagnostic tool and does not replace professional medical advice. [cite_start]Always consult a qualified healthcare provider for critical symptoms[cite: 79, 291].*
+This project is developed strictly for academic purposes.
+
+---
+
+## ⭐ Acknowledgements
+
+Special appreciation to academic supervisors and mentors for their guidance and support throughout the development of this project.
+```
