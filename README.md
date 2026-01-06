@@ -116,7 +116,7 @@ A hybrid testing strategy was adopted to ensure system reliability:
 
 | Home Screen                   | Symptom Input                   | Prediction Result                 |
 | ----------------------------- | ------------------------------- | --------------------------------- |
-| ![Home](screenshots/home.png) | ![Input](screenshots/input.png) | ![Result](screenshots/result.png) |
+| ![Home](https://github.com/Rufuscsc/HealthSense-AI/blob/master/screenshot/homepage.png) | ![Input](https://github.com/Rufuscsc/HealthSense-AI/blob/master/screenshot/symptomspage.png) | ![Result](https://github.com/Rufuscsc/HealthSense-AI/blob/master/screenshot/resultpage.png) |
 
 ### 🎥 Demo GIF
 
