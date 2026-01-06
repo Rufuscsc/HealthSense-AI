@@ -13,26 +13,18 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  // Text controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _ageController = TextEditingController();
-
-  // 1. NEW STATE VARIABLES: Track visibility for both password fields
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
-
-  // Loading state
   bool _isSigningUp = false;
 
   Future signUp() async {
-    // 1. Validation
     if (!passwordConfirmed()) return;
-
-    // Basic Age Validation
     if (_ageController.text.trim().isEmpty || int.tryParse(_ageController.text.trim()) == null) {
       _showError("Please enter a valid number for Age");
       return;
@@ -41,20 +33,14 @@ class _RegisterPageState extends State<RegisterPage> {
     setState(() => _isSigningUp = true);
 
     try {
-      // 2. Create User in Firebase Auth
       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-
-      // Check if user is created successfully
       if (userCredential.user != null) {
-        // 3. Update Display Name
         String fullName = "${_firstNameController.text.trim()} ${_lastNameController.text.trim()}";
         await userCredential.user?.updateDisplayName(fullName);
         await userCredential.user?.reload();
-
-        // 4. Save extra details to Firestore
         await addUserDetails(
           _firstNameController.text.trim(),
           _lastNameController.text.trim(),
@@ -62,8 +48,6 @@ class _RegisterPageState extends State<RegisterPage> {
           _emailController.text.trim(),
           userCredential.user!.uid,
         );
-
-        // 5. SHOW SUCCESS DIALOG
         if (mounted) {
           showDialog(
             context: context,
@@ -102,13 +86,9 @@ class _RegisterPageState extends State<RegisterPage> {
             },
           );
         }
-
-        // 6. Wait 2 seconds
         await Future.delayed(const Duration(seconds: 2));
-
-        // 7. Close Dialog and Navigate
         if (mounted) {
-          Navigator.of(context).pop(); // Close dialog
+          Navigator.of(context).pop();
           Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
         }
       }
@@ -182,8 +162,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 Text('Hello there!', style: GoogleFonts.bebasNeue(fontSize: 50)),
                 const Text('Register below with your details', style: TextStyle(fontSize: 18)),
                 const SizedBox(height: 50),
-
-                // Normal Fields (obscureText = false)
                 _buildTextField(_firstNameController, 'First name', obscureText: false),
                 const SizedBox(height: 15),
                 _buildTextField(_lastNameController, 'Last name', obscureText: false),
@@ -194,11 +172,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 const SizedBox(height: 15),
 
-                // --- 2. PASSWORD FIELD (With Toggle) ---
                 _buildTextField(
                   _passwordController,
                   'Password',
-                  obscureText: _obscurePassword, // Pass the variable
+                  obscureText: _obscurePassword,
                   suffixIcon: IconButton(
                     icon: Icon(
                       _obscurePassword ? Icons.visibility_off : Icons.visibility,
@@ -214,11 +191,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 const SizedBox(height: 15),
 
-                // --- 3. CONFIRM PASSWORD FIELD (With Toggle) ---
                 _buildTextField(
                   _confirmPasswordController,
                   'Confirm Password',
-                  obscureText: _obscureConfirmPassword, // Pass the variable
+                  obscureText: _obscureConfirmPassword,
                   suffixIcon: IconButton(
                     icon: Icon(
                       _obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
@@ -234,7 +210,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 const SizedBox(height: 30),
 
-                // --- SIGN UP BUTTON ---
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
@@ -261,8 +236,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 const SizedBox(height: 25),
-
-                // --- LOGIN LINK ---
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -282,14 +255,13 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  // --- UPDATED HELPER WIDGET ---
   Widget _buildTextField(
       TextEditingController controller,
       String hint,
       {
-        required bool obscureText, // Now required so we are explicit
+        required bool obscureText,
         bool isNumber = false,
-        Widget? suffixIcon, // Optional icon
+        Widget? suffixIcon,
       }
       ) {
     return Padding(
@@ -310,7 +282,7 @@ class _RegisterPageState extends State<RegisterPage> {
               border: InputBorder.none,
               hintText: hint,
               hintStyle: TextStyle(color: Colors.grey[500]),
-              suffixIcon: suffixIcon, // Add icon here
+              suffixIcon: suffixIcon,
             ),
           ),
         ),

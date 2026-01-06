@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // For Haptic Feedback
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FeedbackScreen extends StatefulWidget {
@@ -14,8 +14,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   final _controller = TextEditingController();
   bool _submitted = false;
   int _selectedIndex = 3;
-
-  // Dynamic Content based on rating
   String get _ratingLabel {
     if (stars == 5) return "Amazing!";
     if (stars == 4) return "Good job!";
@@ -33,18 +31,15 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   }
 
   Color get _ratingColor {
-    if (stars >= 4) return const Color(0xFF673AB7); // Deep Purple
+    if (stars >= 4) return const Color(0xFF673AB7);
     if (stars == 3) return Colors.amber;
     return Colors.redAccent;
   }
 
   void _submit() {
-    // Hide keyboard
     FocusScope.of(context).unfocus();
 
     setState(() => _submitted = true);
-
-    // Simulate sending data
     Future.delayed(const Duration(seconds: 2), () {
       if (mounted) {
         Navigator.pop(context);
@@ -74,10 +69,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Use a Stack to put a gradient behind the main content
       body: Stack(
         children: [
-          // 1. BACKGROUND GRADIENT
           Container(
             height: double.infinity,
             width: double.infinity,
@@ -89,12 +82,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
               ),
             ),
           ),
-
-          // 2. MAIN CONTENT
           SafeArea(
             child: Column(
               children: [
-                // Custom App Bar Area
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
                   child: Row(
@@ -113,14 +103,13 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         ),
                       ),
                       const Spacer(),
-                      const SizedBox(width: 48), // Balance the back button
+                      const SizedBox(width: 48),
                     ],
                   ),
                 ),
 
                 const SizedBox(height: 10),
 
-                // Header Text
                 if (!_submitted)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -137,7 +126,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
                 const SizedBox(height: 30),
 
-                // 3. WHITE SHEET CONTAINER
                 Expanded(
                   child: Container(
                     width: double.infinity,
@@ -162,7 +150,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     );
   }
 
-  // --- VIEW: FORM INPUT ---
   Widget _buildFormView() {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
@@ -171,7 +158,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
         children: [
           const SizedBox(height: 10),
 
-          // EMOJI & LABEL
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 300),
             transitionBuilder: (child, anim) => ScaleTransition(scale: anim, child: child),
@@ -197,7 +183,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
           const SizedBox(height: 25),
 
-          // STAR ROW
           Container(
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
             decoration: BoxDecoration(
@@ -210,7 +195,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                 final starIndex = index + 1;
                 return GestureDetector(
                   onTap: () {
-                    HapticFeedback.lightImpact(); // Add Haptic Feedback
+                    HapticFeedback.lightImpact();
                     setState(() => stars = starIndex);
                   },
                   child: AnimatedScale(
@@ -229,7 +214,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
           const SizedBox(height: 30),
 
-          // QUESTION LABEL (Restored)
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
@@ -240,7 +224,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
           const SizedBox(height: 12),
 
-          // TEXT INPUT
           Container(
             decoration: BoxDecoration(
               color: Colors.grey[50],
@@ -261,7 +244,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
           const SizedBox(height: 30),
 
-          // SUBMIT BUTTON
           SizedBox(
             width: double.infinity,
             height: 55,
@@ -288,8 +270,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
       ),
     );
   }
-
-  // --- VIEW: SUCCESS STATE ---
   Widget _buildSuccessView() {
     return Center(
       child: Padding(
@@ -335,7 +315,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     );
   }
 
-  // --- BOTTOM NAV BAR ---
   Widget _buildBottomNav() {
     return Container(
       decoration: BoxDecoration(

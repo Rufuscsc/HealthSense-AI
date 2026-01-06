@@ -27,13 +27,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
     _loadCurrentData();
   }
 
-  // --- LOGIC ---
   void _loadCurrentData() {
     setState(() {
       _emailCtrl.text = user?.email ?? "";
 
       if (user?.displayName != null && user!.displayName!.isNotEmpty) {
-        // LOGIC: Get only the First Name
         _nameCtrl.text = user!.displayName!.split(' ').first;
       } else {
         _fetchNameFromFirestore();
@@ -51,7 +49,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       if (query.docs.isNotEmpty) {
         final data = query.docs.first.data();
         setState(() {
-          // LOGIC: Only use the 'firstName' field
           _nameCtrl.text = "${data['firstName']}".trim();
         });
       }
@@ -119,7 +116,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  // --- UI BUILD ---
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,7 +125,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           children: [
 
-            // 1. CUSTOM HEADER
             Stack(
               clipBehavior: Clip.none,
               alignment: Alignment.center,
@@ -182,13 +177,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
             const SizedBox(height: 60),
 
-            // 2. USER INFO
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
 
-                  // --- PERFECTLY CENTERED TEXT FIELD ---
                   TextField(
                     controller: _nameCtrl,
                     textAlign: TextAlign.center,
@@ -232,8 +225,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
 
             const SizedBox(height: 30),
-
-            // 3. SETTINGS SECTIONS
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -344,9 +335,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
-
-  // --- WIDGET HELPERS ---
-
   Widget _sectionTitle(String title) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10, left: 5),

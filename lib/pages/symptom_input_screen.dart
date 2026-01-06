@@ -32,7 +32,7 @@ class _SymptomInputScreenState extends State<SymptomInputScreen> {
   final TextEditingController _descriptionController = TextEditingController();
 
 
-  final String _apiKey = 'AIzaSyDugi29iq8CoO0DhNKD8DPFi3bI0h8uzi0';
+  final String _apiKey = 'AIzaSyB7KPmI9z7yluyORLNQKZ5pNWAGs_Ldz-M';
 
   bool _loading = false;
   int _selectedIndex = 1;

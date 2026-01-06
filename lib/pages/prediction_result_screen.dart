@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:firebasepractice/main.dart'; // For PredictionEntry class
+import 'package:firebasepractice/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/* -------------------------
-   Prediction Result Screen
-   ------------------------- */
+
 class PredictionResultScreen extends StatelessWidget {
   const PredictionResultScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Retrieve arguments passed from the previous screen
     final PredictionEntry entry =
     ModalRoute.of(context)!.settings.arguments as PredictionEntry;
 
     return Scaffold(
-      backgroundColor: Colors.grey[50], // Clean off-white background
+      backgroundColor: Colors.grey[50],
       body: SafeArea(
         child: Column(
           children: [
-            // --- CUSTOM HEADER (Replaces AppBar) ---
+
             Padding(
               padding:
               const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
@@ -55,7 +52,6 @@ class PredictionResultScreen extends StatelessWidget {
               ),
             ),
 
-            // --- MAIN CONTENT ---
             Expanded(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -64,8 +60,6 @@ class PredictionResultScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(height: 10),
-
-                    // --- DIAGNOSIS HERO SECTION ---
                     Container(
                       padding: const EdgeInsets.all(30),
                       decoration: BoxDecoration(
@@ -124,8 +118,6 @@ class PredictionResultScreen extends StatelessWidget {
                     ),
 
                     const SizedBox(height: 30),
-
-                    // --- DETAILS CARD ---
                     Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(24),
@@ -144,7 +136,6 @@ class PredictionResultScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // 1. Advice Header
                           Row(
                             children: [
                               const Icon(Icons.info_outline,
@@ -170,8 +161,6 @@ class PredictionResultScreen extends StatelessWidget {
                             ),
                           ),
 
-                          // 2. OTHER PROBABILITIES SECTION (NEW)
-                          // Only show if list is not empty
                           if (entry.otherDiagnoses.isNotEmpty) ...[
                             const SizedBox(height: 25),
                             const Divider(),
@@ -193,8 +182,6 @@ class PredictionResultScreen extends StatelessWidget {
                               ],
                             ),
                             const SizedBox(height: 15),
-
-                            // List of other diseases
                             ...entry.otherDiagnoses.map((diag) {
                               return Container(
                                 margin: const EdgeInsets.only(bottom: 10),
@@ -232,8 +219,6 @@ class PredictionResultScreen extends StatelessWidget {
                           const SizedBox(height: 25),
                           const Divider(),
                           const SizedBox(height: 20),
-
-                          // 3. Symptoms Header
                           Row(
                             children: [
                               const Icon(Icons.sick_outlined,
@@ -279,8 +264,6 @@ class PredictionResultScreen extends StatelessWidget {
                     ),
 
                     const SizedBox(height: 30),
-
-                    // --- ACTIONS ---
                     Row(
                       children: [
                         Expanded(
@@ -290,7 +273,6 @@ class PredictionResultScreen extends StatelessWidget {
                                 const SnackBar(
                                     content: Text('Result saved to history')),
                               );
-                              // Go back to home
                               Navigator.pushNamedAndRemoveUntil(
                                   context, '/home', (route) => false);
                             },

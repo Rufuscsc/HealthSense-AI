@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'database_service.dart';
@@ -13,9 +13,9 @@ class HistoryScreen extends StatefulWidget {
 
 class _HistoryScreenState extends State<HistoryScreen> {
   int _selectedIndex = 2;
-  final DatabaseService _dbService = DatabaseService(); // Initialize Service
+  final DatabaseService _dbService = DatabaseService();
 
-  // Navigation Logic (Unchanged)
+
   void _onTapNav(int index) {
     if (index == _selectedIndex) return;
     setState(() => _selectedIndex = index);
@@ -28,7 +28,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     }
   }
 
-  // --- DELETE FUNCTION (UPDATED FOR FIREBASE) ---
+
   void _deleteItem(String docId) {
     _dbService.deleteHistoryItem(docId);
     ScaffoldMessenger.of(context).showSnackBar(
@@ -46,7 +46,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- HEADER ---
               const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,7 +68,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       ),
                     ],
                   ),
-                  // Clear All Button
                   IconButton(
                     icon: const Icon(Icons.delete_sweep, color: Colors.red),
                     onPressed: () {
@@ -99,17 +97,14 @@ class _HistoryScreenState extends State<HistoryScreen> {
               ),
               const SizedBox(height: 25),
 
-              // --- FIREBASE STREAM BUILDER ---
+
               Expanded(
                 child: StreamBuilder<QuerySnapshot>(
                   stream: _dbService.getHistoryStream(),
                   builder: (context, snapshot) {
-                    // 1. Handling Loading State
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
                     }
-
-                    // 2. Handling Empty State
                     if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                       return Center(
                         child: Column(
@@ -125,26 +120,21 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         ),
                       );
                     }
-
-                    // 3. Handling Data
                     final docs = snapshot.data!.docs;
 
                     return ListView.builder(
                       itemCount: docs.length,
                       physics: const BouncingScrollPhysics(),
                       itemBuilder: (_, idx) {
-                        // Get data and document ID
                         final doc = docs[idx];
                         final data = doc.data() as Map<String, dynamic>;
                         final docId = doc.id;
-
-                        // Safely access fields (handle nulls)
                         final illness = data['illness'] ?? 'Unknown';
                         final confidence = (data['confidence'] ?? 0.0).toDouble();
                         final symptomsList = List<String>.from(data['symptoms'] ?? []);
                         final notes = data['notes'] ?? 'No advice provided.';
 
-                        // Format Timestamp
+
                         String dateStr = 'Just now';
                         if (data['timestamp'] != null) {
                           DateTime date = (data['timestamp'] as Timestamp).toDate();
@@ -152,7 +142,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         }
 
                         return Dismissible(
-                          key: Key(docId), // Must use Document ID for keys
+                          key: Key(docId),
                           direction: DismissDirection.endToStart,
                           onDismissed: (direction) => _deleteItem(docId),
                           background: Container(

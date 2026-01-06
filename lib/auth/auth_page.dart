@@ -13,11 +13,11 @@ class AuthPage extends StatefulWidget {
 
 class _AuthPageState extends State<AuthPage> {
 
-  // 1. VARIABLE: Tracks which screen is currently visible.
+  // VARIABLE: Tracks which screen is currently visible.
   // We initialize it to true so the user sees the Login page first.
   bool showLoginPage = true;
 
-  // 2. FUNCTION: Toggles the state.
+  // FUNCTION: Toggles the state.
   // When this function is called, it flips the boolean (true -> false, or false -> true)
   // and triggers a rebuild of the UI (setState).
   void toggleScreens(){
@@ -28,7 +28,7 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
-    // 3. LOGIC: Decide which widget to return based on the boolean.
+    // LOGIC: Decide which widget to return based on the boolean.
     if(showLoginPage){
       // If true, return the Login Page.
       // IMPORTANT: We pass the 'toggleScreens' function to the LoginPage.

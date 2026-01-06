@@ -76,10 +76,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _homeView() {
-    // Get name from Auth (saved in register page), fallback to email
     String nameFromAuth = user?.displayName ?? "User";
-
-    // Split by space (for "First Last") or @ (for email) and take the first part
     final String shortName = nameFromAuth.split(RegExp(r"[@\s]"))[0];
 
     final String formattedName = shortName.isNotEmpty
@@ -120,7 +117,6 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
 
-                // Logout Icon
                 IconButton(
                   onPressed: _signOut,
                   icon: Container(
@@ -137,7 +133,6 @@ class _HomePageState extends State<HomePage> {
 
             const SizedBox(height: 30),
 
-            // --- CARDS SECTION ---
             Column(
               children: [
                 _quickCard(Icons.health_and_safety, 'Check Symptoms',

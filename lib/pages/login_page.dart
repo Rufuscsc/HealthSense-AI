@@ -17,7 +17,6 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  // 1. NEW VARIABLE: Tracks if the password should be hidden
   bool _obscurePassword = true;
 
   Future<void> signIn() async {
@@ -71,8 +70,6 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(color: Colors.grey[600]),
                 ),
                 const SizedBox(height: 40),
-
-                // --- EMAIL INPUT ---
                 _buildTextField(
                     controller: _emailController,
                     hint: 'Email',
@@ -80,22 +77,16 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 const SizedBox(height: 15),
-
-                // --- PASSWORD INPUT (UPDATED) ---
                 _buildTextField(
                   controller: _passwordController,
                   hint: 'Password',
-                  // 2. Pass the variable here
                   obscureText: _obscurePassword,
-                  // 3. Add the Eye Icon Button
                   suffixIcon: IconButton(
                     icon: Icon(
-                      // Choose the icon based on the state
                       _obscurePassword ? Icons.visibility_off : Icons.visibility,
                       color: Colors.grey,
                     ),
                     onPressed: () {
-                      // Flip the state when pressed
                       setState(() {
                         _obscurePassword = !_obscurePassword;
                       });
@@ -105,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
 
                 const SizedBox(height: 10),
 
-                // --- FORGOT PASSWORD ---
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -129,7 +120,6 @@ class _LoginPageState extends State<LoginPage> {
 
                 const SizedBox(height: 20),
 
-                // --- SIGN IN BUTTON ---
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
@@ -154,7 +144,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 25),
 
-                // --- REGISTER LINK ---
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -182,12 +171,12 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  // --- UPDATED REUSABLE TEXT FIELD WIDGET ---
+
   Widget _buildTextField({
     required TextEditingController controller,
     required String hint,
     required bool obscureText,
-    Widget? suffixIcon // New optional parameter for the icon
+    Widget? suffixIcon
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -206,7 +195,7 @@ class _LoginPageState extends State<LoginPage> {
               border: InputBorder.none,
               hintText: hint,
               hintStyle: TextStyle(color: Colors.grey[400]),
-              suffixIcon: suffixIcon, // Add the icon here
+              suffixIcon: suffixIcon,
             ),
           ),
         ),

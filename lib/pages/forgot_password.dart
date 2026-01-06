@@ -70,7 +70,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- CUSTOM BACK BUTTON (Replaces AppBar) ---
               const SizedBox(height: 10),
               IconButton(
                 onPressed: () => Navigator.of(context).pop(),
@@ -79,7 +78,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
               const SizedBox(height: 40),
 
-              // --- MAIN CONTENT ---
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -110,8 +108,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       ),
 
                       const SizedBox(height: 40),
-
-                      // --- EMAIL INPUT ---
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.grey[50],
@@ -132,8 +128,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       ),
 
                       const SizedBox(height: 25),
-
-                      // --- SEND BUTTON ---
                       MaterialButton(
                         onPressed: passwordRest,
                         color: Colors.deepPurple,

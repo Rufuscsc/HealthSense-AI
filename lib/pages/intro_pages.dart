@@ -15,10 +15,8 @@ class IntroPage1 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 60),
-
-              // Responsive Lottie
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.40, // 40% of screen
+                height: MediaQuery.of(context).size.height * 0.40,
                 child: Lottie.network(
                   'https://lottie.host/4b3d7640-f6b1-4ea2-b87a-473e711304be/ObLBXYpW1S.json',
                   fit: BoxFit.contain,
@@ -27,7 +25,6 @@ class IntroPage1 extends StatelessWidget {
 
               const SizedBox(height: 30),
 
-              // Title
               const Center(
                 child: Text(
                   "Smart Symptom Checker",
@@ -82,10 +79,8 @@ class IntroPage2 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 60),
-
-              // Responsive Lottie
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.40, // 40% of screen
+                height: MediaQuery.of(context).size.height * 0.40,
                 child: Lottie.network(
                   'https://lottie.host/a064032a-42da-47e6-9017-a1a6712e9653/rQYiH9lbJg.json',
                   fit: BoxFit.contain,
@@ -93,8 +88,6 @@ class IntroPage2 extends StatelessWidget {
               ),
 
               const SizedBox(height: 40),
-
-              // Title
               const Center(
                 child: Text(
                   "AI-Powered Predictions",
@@ -109,8 +102,6 @@ class IntroPage2 extends StatelessWidget {
               ),
 
               const SizedBox(height: 15),
-
-              // Subtitle
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 28),
                 child: Text(
@@ -148,10 +139,8 @@ class IntroPage3 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 60),
-
-              // Responsive Lottie
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.40, // 40% of screen
+                height: MediaQuery.of(context).size.height * 0.40,
                 child: Lottie.network(
                   'https://lottie.host/f190ce9e-bc41-4cfb-af33-843ff359c9c4/KvUVHkC5iL.json',
                   fit: BoxFit.contain,
@@ -159,8 +148,6 @@ class IntroPage3 extends StatelessWidget {
               ),
 
               const SizedBox(height: 30),
-
-              // Title
               const Center(
                 child: Text(
                   "Personalized Health Advice",
@@ -175,8 +162,6 @@ class IntroPage3 extends StatelessWidget {
               ),
 
               const SizedBox(height: 10),
-
-              // Subtitle
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
