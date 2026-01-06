@@ -120,11 +120,7 @@ A hybrid testing strategy was adopted to ensure system reliability:
 
 ### 🎥 Demo GIF
 
-```text
-screenshots/demo.gif
-```
-
-![Demo](screenshots/demo.gif)
+<img src="https://github.com/Rufuscsc/HealthSense-AI/blob/master/screenshot/demo.gif" width="300" />
 
 ---
 
@@ -164,4 +160,3 @@ This project is developed strictly for academic purposes.
 ## ⭐ Acknowledgements
 
 Special appreciation to academic supervisors and mentors for their guidance and support throughout the development of this project.
-```
